@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fähigkeiten – Davina</title>
+  <link rel="stylesheet" href="/css/faehigkeiten.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="uebermich.html">Über mich</a></li>
+        <li><a href="faehigkeiten.html">Fähigkeiten</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+ <section class="faehigkeiten-titel">
+  <h2>Fähigkeiten</h2>
+  </section>
+
+  <section class="skills-ratings">
+    <div class="skill-entry">
+    <label>Englischkenntnisse</label><input type="range" min="0" max="10" value="8" disabled/>
+    </div>
+    <div class="skill-entry">
+    <label>Sozialkompetenz</label><input type="range" min="0" max="10" value="7" disabled/>
+    </div>
+    <div class="skill-entry">
+    <label>Teamfähigkeit</label><input type="range" min="0" max="10" value="6" disabled/>
+    </div>
+    <div class="skill-entry1">
+    <label>IT-Kenntnisse</label><input type="range" min="0" max="10" value="9" disabled/>
+    </div>
+  </section>
+
+  <main>
+  <div class="box">
+   <div class="wrapper">
+    <button class="nav-button" onclick="prevCard()">←</button>
+
+    <div class="card-container" onclick="flipCard()">
+      <div class="card" id="card">
+        <div class="card-face card-front" id="card-front"></div>
+        <div class="card-face card-back" id="card-back"></div>
+      </div>
+    </div>
+
+    <button class="nav-button" onclick="nextCard()">→</button>
+  </div>
+  </main>
+
+  <script>
+    const cards = [
+      { front: "Teamarbeit", back: "Ich arbeite sehr gerne im Team und höre gerne neue Ideen." },
+      { front: "Kommunikationsfähigkeit", back: "Ich bespreche und unterhalte mich gerne mit anderen Leuten. Auch die Kommunikation mit Fremden fällt mir nicht schwer." },
+      { front: "Selbstständig", back: "Ich arbeite gerne selbstständig und beweise, dass ich Probleme auch selbst lösen kann." }
+    ];
+
+    let currentIndex = 0;
+    const cardEl = document.getElementById('card');
+    const frontEl = document.getElementById('card-front');
+    const backEl = document.getElementById('card-back');
+
+    function updateCard() {
+      frontEl.textContent = cards[currentIndex].front;
+      backEl.textContent = cards[currentIndex].back;
+      cardEl.classList.remove('flipped');
+    }
+
+    function flipCard() {
+      cardEl.classList.toggle('flipped');
+    }
+
+    function prevCard() {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      updateCard();
+    }
+
+    function nextCard() {
+      currentIndex = (currentIndex + 1) % cards.length;
+      updateCard();
+    }
+
+    updateCard();
+  </script>
+  </section>
+
+  <footer>
+    <h3>Kontakt</h3>
+    <p>Davina Melzer<br>Hinterberg 25<br>CH-9014 St. Gallen<br>+41 78 696 39 91<br>davina.thy.melzer@gmail.com</p>
+  </footer>
+</body>
+</html>
